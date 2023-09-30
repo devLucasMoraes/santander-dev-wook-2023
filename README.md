@@ -14,41 +14,42 @@ RESTful API da Santander Dev Week 2023 construída em Java 17 com Spring Boot 3.
 O Figma foi utilizado para a abstração do domínio desta API, sendo útil na análise e projeto da solução.
 
 ## Diagrama de Classes (Domínio da API)
+gere um digrama de classes (usando a sintaxe Mermaid) tendo em vista o seguinte JSON. Mantenha uma estrutura fiel ao modelo que vou passar. Além disso, mantenha o nome das classes em inglês.
 
 ```mermaid
 classDiagram
-  class User {
-    -String name
-    -Account account
-    -Feature[] features
-    -Card card
-    -News[] news
-  }
+class User {
+  -name: string
+  -account: Account
+  -features: Feature[]
+  -card: Card 
+  -news: News[]
+}
 
-  class Account {
-    -String number
-    -String agency
-    -Number balance
-    -Number limit
-  }
+class Account {
+  -number: string
+  -agency: string
+  -balance: number
+  -limit: number  
+}
 
-  class Feature {
-    -String icon
-    -String description
-  }
+class Feature {
+  -icon: string
+  -description: string
+}
 
-  class Card {
-    -String number
-    -Number limit
-  }
+class Card {
+  -number: string
+  -limit: number
+}
 
-  class News {
-    -String icon
-    -String description
-  }
+class News {
+  -icon: string
+  -description: string  
+}
 
-  User "1" *-- "1" Account
-  User "1" *-- "N" Feature
-  User "1" *-- "1" Card
-  User "1" *-- "N" News
+User "1" *-- "1" Account
+User "1" *-- "0..*" Feature 
+User "1" *-- "1" Card
+User "1" *-- "0..*" News
 ```
